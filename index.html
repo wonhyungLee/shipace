@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="주식회사 씨페이스는 선박 설계, 건조 관리, 복원성 분석을 전문으로 하는 해양 엔지니어링 파트너입니다.">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SEAFACE | 조선 설계 &amp; 해양 엔지니어링">
+    <meta property="og:description" content="선박 설계·복원성 분석·기자재 설계까지, 씨페이스가 해양 프로젝트 전 과정을 책임집니다.">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:image" content="images/og-default.jpg">
+    <meta name="theme-color" content="#003366">
+    <title>SEAFACE | 조선 설계 &amp; 해양 엔지니어링</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="다크모드 전환" title="테마 변경">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <a href="#main-content" class="skip-link">본문으로 바로가기</a>
+    <nav class="navbar" id="navbar" aria-label="주요 메뉴">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo">SEAFACE</div>
+                <div class="logo-subtitle">Ship Design &amp; Engineering</div>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">회사 소개</a></li>
+                <li><a href="#capabilities" class="nav-link">핵심 역량</a></li>
+                <li><a href="#services" class="nav-link">솔루션</a></li>
+                <li><a href="#portfolio" class="nav-link">포트폴리오</a></li>
+                <li><a href="#contact" class="nav-link">문의</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="nav-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span class="sr-only">메뉴 열기</span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-content container">
+                <p class="hero-eyebrow">Trusted Naval Architects</p>
+                <h1 class="hero-title" id="hero-title">
+                    조선 설계와 해양 엔지니어링의 <span class="title-highlight">전략 파트너</span>
+                </h1>
+                <p class="hero-subtitle">
+                    20년 이상 축적한 실증 데이터와 글로벌 규정 경험을 바탕으로 설계부터 건조, 복원성까지 프로젝트 전 과정을 책임집니다.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary" aria-label="솔루션 살펴보기">솔루션 살펴보기</a>
+                    <a href="#contact" class="btn btn-secondary" aria-label="프로젝트 상담 요청하기">프로젝트 상담 요청</a>
+                </div>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="mouse"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-spacing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">회사 소개</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">
+                        주식회사 씨페이스는 선박 설계·건조·복원성 분석을 통합 지원하는 해양 엔지니어링 전문 기업입니다.
+                    </p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>데이터로 검증한 조선 엔지니어링 전문성</h3>
+                        <p>
+                            씨페이스는 선박 설계와 해양 구조 엔지니어링 전 분야에서 기술 컨설팅과 맞춤 솔루션을 제공하며,
+                            프로젝트 초기 전략 수립부터 건조 이후 운영 단계까지 고객과 함께합니다.
+                        </p>
+                        <p>
+                            국제 선급 협회와의 협업 경험과 다양한 상선·특수선 프로젝트 레퍼런스를 통해
+                            규정 준수는 물론 사업성과까지 고려한 실질적인 결과를 만들어 냅니다.
+                        </p>
+                        <div class="company-info">
+                            <div class="info-item">
+                                <div class="info-label">법인명</div>
+                                <div class="info-value">주식회사 씨페이스</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">대표이사</div>
+                                <div class="info-value">김지원</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">설립일</div>
+                                <div class="info-value">2025년 9월 26일</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">사업자등록번호</div>
+                                <div class="info-value">481-86-03267</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-features">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">⚓</div>
+                            <h4>선박 전문성</h4>
+                            <p>선박 구조·성능·복원성 전 영역을 아우르는 통합 설계 노하우</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🚀</div>
+                            <h4>기술 혁신</h4>
+                            <p>실시간 협업을 지원하는 PLM·CAE 기반 협업 인프라 구축</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🤝</div>
+                            <h4>신뢰 파트너</h4>
+                            <p>국내외 조선소 및 선급과의 긴밀한 협력을 통한 빠른 인증 확보</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="capabilities section-spacing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">핵심 역량</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">
+                        설계 효율화, 규정 대응, 프로젝트 가속화를 위한 차별화된 역량을 제공합니다.
+                    </p>
+                </div>
+                <div class="capability-grid">
+                    <article class="capability-card">
+                        <h3>선급 규정 대응</h3>
+                        <p>DNV·LR·KR 등 글로벌 선급 인증 경험을 기반으로 설계 초기부터 규정 리스크를 제거합니다.</p>
+                        <ul>
+                            <li>선급 요구사항 사전 검토</li>
+                            <li>규정 변경 시나리오 대응</li>
+                        </ul>
+                    </article>
+                    <article class="capability-card">
+                        <h3>디지털 엔지니어링</h3>
+                        <p>3D 디지털 트윈과 자동화 데이터 파이프라인으로 설계/시뮬레이션 일정을 단축합니다.</p>
+                        <ul>
+                            <li>3D 모델 기반 협업</li>
+                            <li>시뮬레이션 자동화</li>
+                        </ul>
+                    </article>
+                    <article class="capability-card">
+                        <h3>프로젝트 거버넌스</h3>
+                        <p>PMO 체계와 위험 관리 프로토콜로 다국적 프로젝트의 품질과 일정 준수를 보장합니다.</p>
+                        <ul>
+                            <li>프로젝트 헬스 모니터링</li>
+                            <li>파트너 네트워크 운영</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services section-spacing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">주요 솔루션</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">설계 전략부터 기술 문서화까지 프로젝트 전 과정에 맞춤 솔루션을 제공합니다.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="선박 기본 설계">
+                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                            </svg>
+                        </div>
+                        <h3>선박 설계 엔지니어링</h3>
+                        <p>선종별 운항 패턴과 비즈니스 모델을 고려한 최적화 설계를 통해 안정성과 수익성을 동시에 강화합니다.</p>
+                        <div class="service-tags">
+                            <span class="tag">3D Modeling</span>
+                            <span class="tag">Hydrostatics</span>
+                            <span class="tag">Class Approval</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="건조 관리">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3>건조 통합 관리</h3>
+                        <p>프로젝트 관리, 품질 관리, 협력사 커뮤니케이션을 통합해 일정 지연과 비용 리스크를 최소화합니다.</p>
+                        <div class="service-tags">
+                            <span class="tag">PMO</span>
+                            <span class="tag">Quality Control</span>
+                            <span class="tag">Site Support</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="복원성 계산">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>복원성 분석</h3>
+                        <p>선급 및 IMO 규정에 부합하는 복원성 계산과 시나리오 기반 위험 분석으로 운항 안정성을 확보합니다.</p>
+                        <div class="service-tags">
+                            <span class="tag">Stability Analysis</span>
+                            <span class="tag">IMO Compliance</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="해양 구조 컨설팅">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                        </div>
+                        <h3>해양 구조 컨설팅</h3>
+                        <p>해양 구조물과 기자재의 설계, 시뮬레이션, 성능 검증을 통합 지원해 프로젝트 위험을 선제적으로 관리합니다.</p>
+                        <div class="service-tags">
+                            <span class="tag">FEA</span>
+                            <span class="tag">Retrofit</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="기술 문서화">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3>기술 문서화</h3>
+                        <p>선급 승인, 조선소 협업, 운영 매뉴얼을 위한 모든 기술 문서와 도면을 신속하게 제작합니다.</p>
+                        <div class="service-tags">
+                            <span class="tag">Documentation</span>
+                            <span class="tag">Technical Drawing</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" role="img" aria-label="기자재 설계 &amp; 엔지니어링">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h3>기자재 설계 &amp; 엔지니어링</h3>
+                        <p>기계·전장·안전 기자재 설계를 통합 지원하며, 설치/시험 절차까지 일괄 관리합니다.</p>
+                        <div class="service-tags">
+                            <span class="tag">Mechanical Design</span>
+                            <span class="tag">System Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio section-spacing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">포트폴리오</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">상선, 특수선, 해양 구조물 프로젝트에서 축적한 실적을 확인하세요.</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image" role="img" aria-label="친환경 컨테이너선">
+                            <div class="portfolio-overlay">
+                                <h4>친환경 컨테이너선</h4>
+                                <p>LNG 듀얼 연료 추진선 개념 설계 및 복원성 검증</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image" role="img" aria-label="해양 플랫폼">
+                            <div class="portfolio-overlay">
+                                <h4>해양 플랫폼</h4>
+                                <p>해양 플로팅 구조물 구조 해석 및 안전성 평가</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image" role="img" aria-label="레저 요트">
+                            <div class="portfolio-overlay">
+                                <h4>프리미엄 요트</h4>
+                                <p>고급 레저 요트 설계 및 고객 맞춤 인테리어 엔지니어링</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image" role="img" aria-label="해양 구조물">
+                            <div class="portfolio-overlay">
+                                <h4>해양 구조물</h4>
+                                <p>부유식 해양 구조물 모듈화 및 설치 공정 최적화</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section id="insights" class="insights section-spacing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">고객 성공 사례 &amp; 인증</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">씨페이스는 검증된 기술력과 파트너 네트워크로 신뢰를 구축하고 있습니다.</p>
+                </div>
+                <div class="insight-grid">
+                    <article class="insight-card">
+                        <h3>Client Spotlight</h3>
+                        <p class="insight-quote">“씨페이스와의 협업으로 설계 승인 기간이 30% 단축됐고, 시운전 이슈도 사전에 해소할 수 있었습니다.”</p>
+                        <p class="insight-meta">- 글로벌 컨테이너선사 프로젝트 매니저</p>
+                    </article>
+                    <article class="insight-card certifications">
+                        <h3>Certifications</h3>
+                        <ul class="certification-list">
+                            <li>ISO 9001 품질경영시스템 인증</li>
+                            <li>KOSHIPA 조선해양 기자재 등록업체</li>
+                            <li>DNV Ship Design Partner Program</li>
+                        </ul>
+                        <p class="insight-meta">파트너십: HD현대중공업, 삼성중공업, 부산테크노파크</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats section-spacing" aria-label="주요 성과 지표">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">프로젝트 완료</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-suffix">%</div>
+                        <div class="stat-label">고객 만족도</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">핵심 기술 분야</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="24">0</div>
+                        <div class="stat-suffix">/7</div>
+                        <div class="stat-label">기술 지원</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta" class="cta section-spacing">
+            <div class="container cta-content">
+                <div>
+                    <h2>다음 프로젝트를 함께 준비해 볼까요?</h2>
+                    <p>초기 검토 미팅을 예약하시면 프로젝트 목표와 과제를 함께 진단해 드립니다.</p>
+                </div>
+                <a href="mailto:info@seaface.co.kr" class="btn btn-primary">이메일 상담 요청</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-spacing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">문의하기</h2>
+                    <div class="title-underline"></div>
+                    <p class="section-subtitle">프로젝트 상담, 협력 제안, 기술 문의를 남겨주시면 24시간 이내에 답변드립니다.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon" aria-hidden="true">📍</div>
+                            <h4>주소</h4>
+                            <p>부산광역시 부산진구 중앙대로 666번길 50</p>
+                            <p>부전동 4502호 (부전동, 씨샵 아트&서비스홀)</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon" aria-hidden="true">✉️</div>
+                            <h4>이메일</h4>
+                            <p><a href="mailto:info@seaface.co.kr">info@seaface.co.kr</a></p>
+                            <p><a href="mailto:contact@seaface.co.kr">contact@seaface.co.kr</a></p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon" aria-hidden="true">☎️</div>
+                            <h4>전화</h4>
+                            <p>대표: 051-123-4567</p>
+                            <p>팩스: 051-123-4568</p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-icon" aria-hidden="true">⏰</div>
+                            <h4>운영 시간</h4>
+                            <p>평일 09:00 - 18:00</p>
+                            <p>주말 및 공휴일 휴무</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form" id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label class="sr-only" for="name">이름</label>
+                                <input type="text" id="name" name="name" placeholder="이름" autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="email">이메일</label>
+                                <input type="email" id="email" name="email" placeholder="이메일" autocomplete="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="phone">연락처</label>
+                                <input type="tel" id="phone" name="phone" placeholder="연락처" autocomplete="tel">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="subject">제목</label>
+                                <input type="text" id="subject" name="subject" placeholder="제목" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="message">문의 내용</label>
+                                <textarea id="message" name="message" rows="6" placeholder="문의 내용을 입력해 주세요" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">문의 보내기</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SEAFACE</h3>
+                    <p>선박 설계, 해양 엔지니어링, 복원성 분석을 통합 제공하는 믿을 수 있는 파트너</p>
+                </div>
+                <div class="footer-section">
+                    <h4>바로가기</h4>
+                    <ul>
+                        <li><a href="#about">회사 소개</a></li>
+                        <li><a href="#capabilities">핵심 역량</a></li>
+                        <li><a href="#services">솔루션</a></li>
+                        <li><a href="#portfolio">포트폴리오</a></li>
+                        <li><a href="#contact">문의</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>회사 정보</h4>
+                    <p>주식회사 씨페이스</p>
+                    <p>대표: 김지원</p>
+                    <p>사업자등록번호: 481-86-03267</p>
+                    <p>법인등록번호: 180111-0163713</p>
+                </div>
+                <div class="footer-section">
+                    <h4>문의</h4>
+                    <p>부산광역시 부산진구 중앙대로 666번길 50</p>
+                    <p><a href="mailto:info@seaface.co.kr">info@seaface.co.kr</a></p>
+                    <p><a href="tel:+82511234567">+82-51-123-4567</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SEAFACE Co., Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
