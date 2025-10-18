@@ -1,6 +1,6 @@
-# SEAFACE 회사 홈페이지 (업그레이드 버전 v2.0)
+# SHIPACE 회사 홈페이지 (업그레이드 버전 v2.0)
 
-주식회사 시페이스(SEAFACE)의 공식 홈페이지입니다.
+주식회사 시페이스(SHIPACE)의 공식 홈페이지입니다.
 
 ## 🎉 새로운 기능 (v2.0)
 
@@ -28,7 +28,7 @@
 - **사업자등록번호**: 481-86-03267
 - **법인등록번호**: 180111-0163713
 - **설립일**: 2025년 09월 26일
-- **주소**: 부산광역시 부산진구 중앙대로666번길 50, 디동 4502호 (부전동, 더샵 센트럴스타)
+- **주소**: 부산광역시 부산진구 중앙대로666번길 50, 다동 4502호 (부전동, 더샵 센트럴스타)
 
 ## 사업 분야
 
@@ -42,7 +42,7 @@
 
 ### 파일 구조
 ```
-c:/Temp/seaface/
+c:/Temp/shipace/
 ├── index.html      # 메인 HTML 파일
 ├── styles.css      # 스타일시트
 ├── script.js       # JavaScript 파일
@@ -73,7 +73,7 @@ c:/Temp/seaface/
 ### 2. 로컬 서버 실행 (권장)
 ```bash
 # Python 3가 설치되어 있는 경우
-cd c:/Temp/seaface
+cd c:/Temp/shipace
 python -m http.server 8000
 
 # 브라우저에서 http://localhost:8000 접속
@@ -146,7 +146,7 @@ python -m http.server 8000
 
 ## 라이선스
 
-Copyright © 2025 SEAFACE Co., Ltd. All rights reserved.
+Copyright © 2025 SHIPACE Co., Ltd. All rights reserved.
 
 ## 문의
 

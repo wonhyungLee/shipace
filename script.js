@@ -10,9 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.btn');
     const scrollProgress = document.getElementById('scrollProgress');
     const themeToggle = document.getElementById('themeToggle');
+    const formStatus = document.getElementById('formStatus');
+    const mailCopyButtons = document.querySelectorAll('[data-action="copy-email"]');
+    const mailComposeButtons = document.querySelectorAll('[data-action="compose-email"]');
 
     let lastScrollY = window.scrollY;
     let ticking = false;
+    let statusTimeoutId = null;
 
     // Dark Mode Functionality
     const initTheme = () => {
@@ -30,6 +34,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initTheme();
+
+    const showStatus = (message, type = 'info', persist = false) => {
+        if (!formStatus) {
+            if (type === 'error') {
+                alert(message);
+            } else {
+                console.info(message);
+            }
+            return;
+        }
+
+        if (statusTimeoutId) {
+            clearTimeout(statusTimeoutId);
+            statusTimeoutId = null;
+        }
+
+        formStatus.textContent = message;
+        formStatus.dataset.status = type;
+        formStatus.hidden = !message;
+
+        if (!persist && message) {
+            statusTimeoutId = window.setTimeout(() => {
+                formStatus.textContent = '';
+                formStatus.hidden = true;
+            }, 6000);
+        }
+    };
+
+    const buildMailtoLink = (email, subject, body) => {
+        const params = [];
+        if (subject) {
+            params.push(`subject=${encodeURIComponent(subject)}`);
+        }
+        if (body) {
+            params.push(`body=${encodeURIComponent(body)}`);
+        }
+        const query = params.length > 0 ? `?${params.join('&')}` : '';
+        return `mailto:${email}${query}`;
+    };
+
+    const copyToClipboard = async text => {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+
+        return new Promise((resolve, reject) => {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            textarea.setAttribute('readonly', '');
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                resolve();
+            } catch (error) {
+                reject(error);
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        });
+    };
 
     // Scroll Progress Functionality
     const updateScrollProgress = () => {
@@ -211,15 +279,84 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const email = contactForm.email.value.trim();
+            const senderEmail = contactForm.email.value.trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('올바른 이메일 주소를 입력해 주세요.');
+            if (!emailRegex.test(senderEmail)) {
+                showStatus('올바른 이메일 주소를 입력해 주세요.', 'error');
+                contactForm.email.focus();
                 return;
             }
 
-            alert('문의가 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.');
-            contactForm.reset();
+            const name = contactForm.name.value.trim();
+            const phone = contactForm.phone.value.trim();
+            const subjectRaw = contactForm.subject.value.trim();
+            const message = contactForm.message.value.trim();
+
+            const subject = `[SHIPACE] ${subjectRaw || '상담 문의'}`;
+            const bodyLines = [
+                `이름: ${name || '미기재'}`,
+                `회신 이메일: ${senderEmail}`,
+                phone ? `연락처: ${phone}` : null,
+                '',
+                '문의 내용:',
+                message,
+                '',
+                '---',
+                '자동 생성된 문의 메일입니다. 전송 전에 자유롭게 수정하실 수 있습니다.'
+            ].filter(Boolean);
+
+            const mailtoLink = buildMailtoLink('ceo@shipace.kr', subject, bodyLines.join('\n'));
+
+            showStatus('메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요. 열리지 않는다면 ceo@shipace.kr 로 직접 메일을 보내 주세요.', 'success', true);
+
+            window.setTimeout(() => {
+                window.location.href = mailtoLink;
+            }, 100);
+        });
+    }
+
+    if (mailCopyButtons.length > 0) {
+        mailCopyButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const email = button.getAttribute('data-email') || 'ceo@shipace.kr';
+                try {
+                    await copyToClipboard(email);
+                    button.classList.add('is-success');
+                    showStatus(`이메일 주소 ${email} 을(를) 복사했습니다.`, 'success');
+                    window.setTimeout(() => {
+                        button.classList.remove('is-success');
+                    }, 1500);
+                } catch (error) {
+                    showStatus('복사에 실패했습니다. 복사 권한을 허용하거나 직접 복사해 주세요.', 'error');
+                }
+            });
+        });
+    }
+
+    if (mailComposeButtons.length > 0) {
+        const defaultBody = [
+            '안녕하세요, 시페이스 담당자님.',
+            '',
+            '프로젝트 상담을 요청드리고자 합니다.',
+            '',
+            '회사명/조직:',
+            '담당자 연락처:',
+            '문의 개요:',
+            '',
+            '감사합니다.'
+        ].join('\n');
+
+        mailComposeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const email = button.getAttribute('data-email') || 'ceo@shipace.kr';
+                const subject = button.getAttribute('data-subject') || '[SHIPACE] 상담 문의';
+                const body = button.getAttribute('data-body') || defaultBody;
+                const mailtoLink = buildMailtoLink(email, subject, body);
+                showStatus('메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요.', 'info');
+                window.setTimeout(() => {
+                    window.location.href = mailtoLink;
+                }, 100);
+            });
         });
     }
 
@@ -320,5 +457,5 @@ document.addEventListener('DOMContentLoaded', () => {
     lazyLoadImages();
     createBackToTop();
 
-    console.log('SEAFACE website initialized with enhanced features.');
+    console.log('SHIPACE website initialized with enhanced features.');
 });
