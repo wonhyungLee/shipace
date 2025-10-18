@@ -74,6 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
         return `mailto:${email}${query}`;
     };
 
+    const triggerMailClient = mailtoLink => {
+        const tempLink = document.createElement('a');
+        tempLink.href = mailtoLink;
+        tempLink.style.display = 'none';
+        tempLink.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(tempLink);
+        try {
+            tempLink.click();
+        } catch (error) {
+            window.location.href = mailtoLink;
+        } finally {
+            document.body.removeChild(tempLink);
+        }
+    };
+
     const copyToClipboard = async text => {
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(text);
@@ -307,11 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const mailtoLink = buildMailtoLink('ceo@shipace.kr', subject, bodyLines.join('\n'));
 
+            triggerMailClient(mailtoLink);
             showStatus('메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요. 열리지 않는다면 ceo@shipace.kr 로 직접 메일을 보내 주세요.', 'success', true);
-
-            window.setTimeout(() => {
-                window.location.href = mailtoLink;
-            }, 100);
         });
     }
 
@@ -352,10 +364,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const subject = button.getAttribute('data-subject') || '[SHIPACE] 상담 문의';
                 const body = button.getAttribute('data-body') || defaultBody;
                 const mailtoLink = buildMailtoLink(email, subject, body);
+                triggerMailClient(mailtoLink);
                 showStatus('메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요.', 'info');
-                window.setTimeout(() => {
-                    window.location.href = mailtoLink;
-                }, 100);
             });
         });
     }
