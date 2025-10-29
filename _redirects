@@ -1,0 +1,7 @@
+# Enforce HTTPS and canonical apex domain
+http://shipace.kr/* https://shipace.kr/:splat 308
+http://www.shipace.kr/* https://shipace.kr/:splat 308
+https://www.shipace.kr/* https://shipace.kr/:splat 301
+
+# Serve SPA entry without issuing a redirect
+/* /index.html 200

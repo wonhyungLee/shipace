@@ -74,6 +74,42 @@ document.addEventListener('DOMContentLoaded', () => {
         return `mailto:${email}${query}`;
     };
 
+    const getEmailProvider = emailAddress => {
+        if (!emailAddress) return '';
+        const [, domain = ''] = emailAddress.toLowerCase().split('@');
+        return domain;
+    };
+
+    const openWebmailCompose = (provider, recipient, subject, body) => {
+        const encodedRecipient = encodeURIComponent(recipient);
+        const encodedSubject = encodeURIComponent(subject);
+        const encodedBody = encodeURIComponent(body);
+        let composeUrl = '';
+
+        switch (provider) {
+            case 'gmail.com':
+            case 'googlemail.com':
+                composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedRecipient}&su=${encodedSubject}&body=${encodedBody}`;
+                break;
+            case 'naver.com':
+                composeUrl = `https://mail.naver.com/v2/compose?to=${encodedRecipient}&subject=${encodedSubject}&body=${encodedBody}`;
+                break;
+            case 'hanmail.net':
+            case 'daum.net':
+                composeUrl = `https://mail.daum.net/popup/compose?to=${encodedRecipient}&subject=${encodedSubject}&body=${encodedBody}`;
+                break;
+            default:
+                break;
+        }
+
+        if (!composeUrl) {
+            return false;
+        }
+
+        const openedWindow = window.open(composeUrl, '_blank', 'noopener');
+        return Boolean(openedWindow);
+    };
+
     const triggerMailClient = mailtoLink => {
         const tempLink = document.createElement('a');
         tempLink.href = mailtoLink;
@@ -320,10 +356,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 '자동 생성된 문의 메일입니다. 전송 전에 자유롭게 수정하실 수 있습니다.'
             ].filter(Boolean);
 
-            const mailtoLink = buildMailtoLink('ceo@shipace.kr', subject, bodyLines.join('\n'));
+            const mailRecipient = 'ceo@shipace.kr';
+            const messageBody = bodyLines.join('\n');
+            const mailtoLink = buildMailtoLink(mailRecipient, subject, messageBody);
+            const provider = getEmailProvider(senderEmail);
+            const openedWebmail = openWebmailCompose(provider, mailRecipient, subject, messageBody);
 
-            triggerMailClient(mailtoLink);
-            showStatus('메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요. 열리지 않는다면 ceo@shipace.kr 로 직접 메일을 보내 주세요.', 'success', true);
+            if (openedWebmail) {
+                if (provider === 'naver.com') {
+                    showStatus('네이버 메일 새 창이 열렸습니다. 로그인 후 내용을 확인하여 전송해 주세요.', 'success', true);
+                } else if (provider === 'gmail.com' || provider === 'googlemail.com') {
+                    showStatus('Gmail 새 창이 열렸습니다. 작성된 내용을 확인한 뒤 전송해 주세요.', 'success', true);
+                } else {
+                    showStatus('웹메일 새 창이 열렸습니다. 내용을 확인한 뒤 전송해 주세요.', 'success', true);
+                }
+            } else {
+                triggerMailClient(mailtoLink);
+                if (provider === 'naver.com') {
+                    showStatus('네이버 메일 팝업이 차단되었거나 기본 메일 앱이 설정되지 않은 경우입니다. 브라우저에서 팝업을 허용하거나 ceo@shipace.kr 주소로 직접 메일을 보내 주세요.', 'info', true);
+                } else {
+                    showStatus('메일 앱이 열리면 내용을 확인한 뒤 전송해 주세요. 열리지 않는다면 ceo@shipace.kr 로 직접 메일을 보내 주세요.', 'success', true);
+                }
+            }
         });
     }
 
